@@ -1,0 +1,13 @@
+.more {
+    width: 1280px;
+    margin: 0 auto;
+    padding: 70px 0;
+    
+    &-text {
+        margin: 0 auto 40px;
+        max-width: 750px;
+        text-align: center;
+        font-size: 18px;
+        line-height: 25px;
+    }
+}
