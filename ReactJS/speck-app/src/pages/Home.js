@@ -6,6 +6,7 @@ import More from '../components/More/More.js';
 import CardContainer from '../components/CardContainer/CardContainer.js';
 import Card from '../components/Card/Card.js';
 import LastYear from '../components/LastYear/LastYear.js';
+import Main from '../components/Main/Main.js';
 
 // Assets
 import About from '../assets/img/about.jpg';
@@ -15,7 +16,7 @@ import Speakers from '../assets/img/speakers.jpg';
 
 const Home = () => {
     return (
-        <main>
+        <Main>
             <Hero />
             <More />
             <CardContainer>
@@ -25,7 +26,7 @@ const Home = () => {
                 <Card image={ Partner } alt="Partner" title="Partneri" />
             </CardContainer>
             <LastYear />
-        </main>
+        </Main>
     );
 }
 

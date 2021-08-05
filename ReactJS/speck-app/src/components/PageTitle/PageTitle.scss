@@ -1,0 +1,10 @@
+.page-header {
+    margin-top: 100px;
+    font-style: inherit;
+    
+    & h2 {
+        text-align: center;
+        margin: 0 0 70px;
+        font-size: 30px;
+    }
+}

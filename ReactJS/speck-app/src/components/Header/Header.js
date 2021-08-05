@@ -1,21 +1,25 @@
 import React from 'react';
 import './Header.scss';
+import { Link } from 'react-router-dom';
 
 import Logo from '../../assets/img/logo.png';
+
+const links = {
+    speakers: 'Sudionici',
+    events: 'Događanja',
+}
 
 const Header = () => {
     return (
         <header className="header">
             <div className="header-inner">
-                <a href="index.html" className="logo">
+                <Link to="/" className="logo">
                     <img src={ Logo } alt="foi logo" className="logo-img" />
-                </a>
+                </Link>
                 <div className="nav">
                     <ul className="nav-list">
-                        <li className="nav-list-item"><a href="./speakers.html">Sudionici</a></li>
-                        <li className="nav-list-item"><a href="./events.html">Događanja</a></li>
-                        <li className="nav-list-item"><a href="#">Kontakt</a></li>
-                        <li className="nav-list-item"><a href="#">Prijavi se</a></li>
+                        <li className="nav-list-item"><Link to="/speakers">{ links.speakers }</Link></li>
+                        <li className="nav-list-item"><Link to="/events">{ links.events }</Link></li>
                     </ul>
                 </div>
             </div>
