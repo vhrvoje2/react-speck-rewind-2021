@@ -1,65 +1,58 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 // Components
 import GridSection from '../components/GridSection/GridSection';
 import InfoBox from '../components/InfoBox/InfoBox';
+import LoaderWrapper from '../components/LoaderWrapper/LoaderWrapper';
 import Main from '../components/Main/Main';
 import PageTitle from '../components/PageTitle/PageTitle';
+import SearchBar from '../components/SearchBar/SearchBar';
+
+// Data
+import EventsData from '../lib/events.js';
 
 const Events = () => {
+    const [events, setEvents] = useState([]);
+    const [filteredEvents, setFilteredEvents] = useState([]);
+
+    useEffect(() => {
+        setTimeout(() => {
+            setEvents(EventsData);
+            setFilteredEvents(EventsData);
+        }, 1000);
+    }, []);
+
+    const ShowEvents = () => {
+        return events.map((event, idx) => 
+            <InfoBox key={ idx }
+                     title={ event.title }
+                     location={ event.location }
+                     datetime={ event.datetime }
+                     description={ event.description }
+                     link={ event.link }
+            />
+        );
+    };
+
+    const inputChange = (value) => {
+        const filteredResult = filteredEvents.filter(event => event.title.toLowerCase().includes(value.toLowerCase()));
+        setEvents(filteredResult);
+    }
+
     return (
         <Main>
-            <PageTitle title="Događanja" />
-            <GridSection>
-                <InfoBox title="How can we benefit from React Redux"
-                         location="Dvorana D09" 
-                         datetime="24.3 u 13:45h" 
-                         description="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Totam deserunt laborum ratione eligendi impedit, et voluptates quibusdam? Repudiandae, illum laborum." />
-                <InfoBox title="How can we benefit from React Redux"
-                         location="Dvorana D09" 
-                         datetime="24.3 u 13:45h" 
-                         description="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Totam deserunt laborum ratione eligendi impedit, et voluptates quibusdam? Repudiandae, illum laborum." />
-                <InfoBox title="How can we benefit from React Redux"
-                         location="Dvorana D09" 
-                         datetime="24.3 u 13:45h" 
-                         description="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Totam deserunt laborum ratione eligendi impedit, et voluptates quibusdam? Repudiandae, illum laborum." />
-                <InfoBox title="How can we benefit from React Redux"
-                         location="Dvorana D09" 
-                         datetime="24.3 u 13:45h" 
-                         description="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Totam deserunt laborum ratione eligendi impedit, et voluptates quibusdam? Repudiandae, illum laborum." />
-                <InfoBox title="How can we benefit from React Redux"
-                         location="Dvorana D09" 
-                         datetime="24.3 u 13:45h" 
-                         description="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Totam deserunt laborum ratione eligendi impedit, et voluptates quibusdam? Repudiandae, illum laborum." />
-                <InfoBox title="How can we benefit from React Redux"
-                         location="Dvorana D09" 
-                         datetime="24.3 u 13:45h" 
-                         description="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Totam deserunt laborum ratione eligendi impedit, et voluptates quibusdam? Repudiandae, illum laborum." />
-                <InfoBox title="How can we benefit from React Redux"
-                         location="Dvorana D09" 
-                         datetime="24.3 u 13:45h" 
-                         description="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Totam deserunt laborum ratione eligendi impedit, et voluptates quibusdam? Repudiandae, illum laborum." />
-                <InfoBox title="How can we benefit from React Redux"
-                         location="Dvorana D09" 
-                         datetime="24.3 u 13:45h" 
-                         description="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Totam deserunt laborum ratione eligendi impedit, et voluptates quibusdam? Repudiandae, illum laborum." />
-                <InfoBox title="How can we benefit from React Redux"
-                         location="Dvorana D09" 
-                         datetime="24.3 u 13:45h" 
-                         description="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Totam deserunt laborum ratione eligendi impedit, et voluptates quibusdam? Repudiandae, illum laborum." />
-                <InfoBox title="How can we benefit from React Redux"
-                         location="Dvorana D09" 
-                         datetime="24.3 u 13:45h" 
-                         description="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Totam deserunt laborum ratione eligendi impedit, et voluptates quibusdam? Repudiandae, illum laborum." />
-                <InfoBox title="How can we benefit from React Redux"
-                         location="Dvorana D09" 
-                         datetime="24.3 u 13:45h" 
-                         description="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Totam deserunt laborum ratione eligendi impedit, et voluptates quibusdam? Repudiandae, illum laborum." />
-                <InfoBox title="How can we benefit from React Redux"
-                         location="Dvorana D09" 
-                         datetime="24.3 u 13:45h" 
-                         description="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Totam deserunt laborum ratione eligendi impedit, et voluptates quibusdam? Repudiandae, illum laborum." />
-            </GridSection>
+            <PageTitle title="Events" />
+            <SearchBar state={ events.length ? false : true }
+                       onValueChange={ inputChange }
+                       placeholder="Search events..."/>
+            {
+                !events.length ? 
+                    <LoaderWrapper />
+                    :
+                    <GridSection>
+                        { ShowEvents() }
+                    </GridSection>
+            }
         </Main>
     );
 }

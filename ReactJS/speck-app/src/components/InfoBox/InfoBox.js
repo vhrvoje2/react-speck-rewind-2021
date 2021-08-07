@@ -9,7 +9,7 @@ const InfoBox = (props) => {
                     props.location ? 
                         <div className="info-box__icon info-box__icon_type-calendar"></div>
                         :
-                        <div class="info-box__icon info-box__icon_type-speakers"></div>
+                        <div className="info-box__icon info-box__icon_type-speakers"></div>
                 }
                 <h2 className="info-box__title-text">{ props.title }</h2>
             </div>

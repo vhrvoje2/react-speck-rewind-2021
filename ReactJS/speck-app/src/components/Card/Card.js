@@ -3,8 +3,8 @@ import './Card.scss';
 
 const Card = (props) => {
     return (
-        <div class="card">
-            <div class="card-img">
+        <div className="card">
+            <div className="card-img">
                 <img src={ props.image } alt={ props.alt } />
             </div>
             <h3>{ props.title }</h3>

@@ -1,4 +1,5 @@
 import React from 'react';
+import Progress from 'rsup-progress';
 
 // Components
 import Hero from '../components/Hero/Hero.js';
@@ -15,18 +16,31 @@ import Partner from '../assets/img/partner.jpg';
 import Speakers from '../assets/img/speakers.jpg';
 
 const Home = () => {
+    const progress = new Progress({
+        height: 3,
+        color: "#c59613",
+        duration: 3000,
+    });
+
+    progress.start();
+    setTimeout(() => {
+        progress.end();
+    }, 3000);
+
     return (
-        <Main>
-            <Hero />
-            <More />
-            <CardContainer>
-                <Card image={ About } alt="About" title="O tjednu karijera" />
-                <Card image={ Speakers } alt="Speakers" title="Izlagači" />
-                <Card image={ Calendar } alt="Calendar" title="Raspored događanja" />
-                <Card image={ Partner } alt="Partner" title="Partneri" />
-            </CardContainer>
-            <LastYear />
-        </Main>
+        <>
+            <Main>
+                <Hero />
+                <More />
+                <CardContainer>
+                    <Card image={ About } alt="About" title="O tjednu karijera" />
+                    <Card image={ Speakers } alt="Speakers" title="Izlagači" />
+                    <Card image={ Calendar } alt="Calendar" title="Raspored događanja" />
+                    <Card image={ Partner } alt="Partner" title="Partneri" />
+                </CardContainer>
+                <LastYear />
+            </Main>
+        </>
     );
 }
 

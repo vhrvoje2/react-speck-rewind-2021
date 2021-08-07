@@ -3,7 +3,7 @@ import './PageTitle.scss';
 
 const PageTitle = (props) => {
     return (
-        <div class="page-header">
+        <div className="page-header">
             <h2>{ props.title }</h2>
         </div>
     );

@@ -4,12 +4,12 @@ import './Hero.scss';
 const Hero = () => {
     return (
         <div>
-            <section class="hero">
-                <div class="hero-div">
-                    <h1 class="hero-heading">Tjedan karijera</h1>
-                    <span class="hero-organizer">FOI</span>
-                    <p class="hero-date">20.10.2020 - 26.10.2020</p>
-                    <p href="#" class="hero-btn">PRIJAVI SE</p>
+            <section className="hero">
+                <div className="hero-div">
+                    <h1 className="hero-heading">Tjedan karijera</h1>
+                    <span className="hero-organizer">FOI</span>
+                    <p className="hero-date">20.10.2020 - 26.10.2020</p>
+                    <p href="#" className="hero-btn">PRIJAVI SE</p>
                 </div>
             </section>
         </div>
